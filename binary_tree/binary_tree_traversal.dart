@@ -1,24 +1,105 @@
+import 'dart:collection';
+
 import 'binary_tree.dart';
 
 class BinaryTreeTraversal {
-  void inOrderTraversal(Node? node) {
+  void inOrderRecursiveTraversal(Node? node) {
     if (node == null) return;
-    inOrderTraversal(node.left);
-    print(node.value);
-    inOrderTraversal(node.right);
+    inOrderRecursiveTraversal(node.left);
+    if (node.value != -1) print(node.value);
+    inOrderRecursiveTraversal(node.right);
   }
 
-  void preOrderTraversal(Node? node) {
+  void preOrderRecursiveTraversal(Node? node) {
     if (node == null) return;
-    print(node.value);
-    preOrderTraversal(node.left);
-    preOrderTraversal(node.right);
+    if (node.value != -1) print(node.value);
+    preOrderRecursiveTraversal(node.left);
+    preOrderRecursiveTraversal(node.right);
   }
 
-  void postOrderTraversal(Node? node) {
+  void postOrderRecursiveTraversal(Node? node) {
     if (node == null) return;
-    postOrderTraversal(node.left);
-    postOrderTraversal(node.right);
-    print(node.value);
+    postOrderRecursiveTraversal(node.left);
+    postOrderRecursiveTraversal(node.right);
+    if (node.value != -1) print(node.value);
+  }
+
+  void inOrderIterativeTraversal(Node? node) {
+    if (node == null) return;
+
+    List<Node> stack = [];
+    Node? current = node;
+
+    while (current != null || stack.isNotEmpty) {
+      while (current != null) {
+        stack.add(current);
+        current = current.left;
+      }
+
+      current = stack.removeLast();
+      if (current.value != -1) {
+        print(current.value);
+      }
+      current = current.right;
+    }
+  }
+
+  void preOrderIterativeTraversal(Node? node) {
+    if (node == null) return;
+
+    List<Node?> stack = [];
+    stack.add(node);
+
+    while (stack.isNotEmpty) {
+      Node? current = stack.removeLast();
+      if (current?.value != -1) {
+        print(current?.value);
+      }
+
+      if (current?.right != null) stack.add(current?.right);
+      if (current?.left != null) stack.add(current?.left);
+    }
+  }
+
+  void postOrderIterativeTraversal(Node? node) {
+    if (node == null) return;
+
+    List<Node?> stack1 = [];
+    List<Node?> stack2 = [];
+
+    stack1.add(node);
+
+    while (stack1.isNotEmpty) {
+      Node? current = stack1.removeLast();
+      stack2.add(current);
+
+      if (current?.left != null) stack1.add(current?.left);
+      if (current?.right != null) stack1.add(current?.right);
+    }
+
+    while (stack2.isNotEmpty) {
+      int value = stack2.removeLast()?.value ?? -1;
+      if (value != -1) {
+        print(value);
+      }
+    }
+  }
+
+  void levelOrderTraversal(Node? node) {
+    if (node == null) return;
+
+    Queue<Node?> queue = Queue<Node?>();
+    queue.add(node);
+
+    while (queue.isNotEmpty) {
+      Node? current = queue.removeFirst();
+      if (current != null) {
+        if (current.value != -1) {
+          print(current.value);
+        }
+        queue.add(current.left);
+        queue.add(current.right);
+      }
+    }
   }
 }

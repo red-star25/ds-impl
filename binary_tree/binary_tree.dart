@@ -9,9 +9,13 @@ void main() {
   BinaryTreeTraversal traversal = BinaryTreeTraversal();
 
   print("""
-          1. In order traversal
-          2. Pre order traversal
-          3. Post order traversal
+          1. In order traversal (Recursive)
+          2. Pre order traversal (Recursive)
+          3. Post order traversal (Recursive)
+          4. In order traversal (Iterative - stack)
+          5. Pre order traversal (Iterative - stack)
+          6. Post order traversal (Iterative - stack)
+          7. Level Order traversal (Iterative - BFS - Queue)
         """);
 
   String? input = stdin.readLineSync();
@@ -29,16 +33,48 @@ void main() {
 
   switch (choice) {
     case 1:
-      print("In order traversal:");
-      traversal.inOrderTraversal(root);
+      print("In order traversal (Recursive):");
+      traversal.inOrderRecursiveTraversal(root);
       break;
     case 2:
-      print("Pre order traversal:");
-      traversal.preOrderTraversal(root);
+      print("Pre order traversal (Recursive):");
+      traversal.preOrderRecursiveTraversal(root);
       break;
     case 3:
-      print("Post order traversal:");
-      traversal.postOrderTraversal(root);
+      print("Post order traversal (Recursive):");
+      traversal.postOrderRecursiveTraversal(root);
+      break;
+    case 4:
+      print("In order traversal (Iterative):");
+      traversal.inOrderIterativeTraversal(root);
+    case 5:
+      print("Pre order traversal (Iterative):");
+      traversal.preOrderIterativeTraversal(root);
+      break;
+    case 6:
+      print("Post order traversal (Iterative):");
+      traversal.postOrderIterativeTraversal(root);
+      break;
+    case 7:
+      print("Level Order traversal (Iterative):");
+      traversal.levelOrderTraversal(root);
+      break;
+    case 8:
+      print("All traversals:");
+      print("In order traversal (Recursive):");
+      traversal.inOrderRecursiveTraversal(root);
+      print("Pre order traversal (Recursive):");
+      traversal.preOrderRecursiveTraversal(root);
+      print("Post order traversal (Recursive):");
+      traversal.postOrderRecursiveTraversal(root);
+      print("In order traversal (Iterative):");
+      traversal.inOrderIterativeTraversal(root);
+      print("Pre order traversal (Iterative):");
+      traversal.preOrderIterativeTraversal(root);
+      print("Post order traversal (Iterative):");
+      traversal.postOrderIterativeTraversal(root);
+      print("Level Order traversal (Iterative):");
+      traversal.levelOrderTraversal(root);
       break;
     default:
       print("Invalid choice. Exiting...");
