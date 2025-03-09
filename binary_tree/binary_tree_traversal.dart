@@ -105,4 +105,23 @@ class BinaryTreeTraversal {
       }
     }
   }
+
+  void levelOrderRecursiveTraversal(Node? node) {
+    int height = heightOfTree(node);
+    for (int i = 1; i <= height; i++) {
+      printGivenLevel(node, i);
+    }
+  }
+
+  void printGivenLevel(Node? node, int level) {
+    if (node == null) return;
+    if (level == 1) {
+      if (node.value != -1) {
+        print(node.value);
+      }
+    } else if (level > 1) {
+      printGivenLevel(node.left, level - 1);
+      printGivenLevel(node.right, level - 1);
+    }
+  }
 }
