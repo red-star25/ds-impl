@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math' as math;
 
 import 'binary_tree_traversal.dart';
 
@@ -16,6 +17,8 @@ void main() {
           5. Pre order traversal (Iterative - stack)
           6. Post order traversal (Iterative - stack)
           7. Level Order traversal (Iterative - BFS - Queue)
+          8. All traversals
+          9. Height of the tree
         """);
 
   String? input = stdin.readLineSync();
@@ -76,6 +79,9 @@ void main() {
       print("Level Order traversal (Iterative):");
       traversal.levelOrderTraversal(root);
       break;
+    case 9:
+      print("Height of the tree: ${heightOfTree(root)}");
+      break;
     default:
       print("Invalid choice. Exiting...");
       break;
@@ -113,4 +119,15 @@ Node buildTree() {
   root.right = buildTree();
 
   return root;
+}
+
+int heightOfTree(Node? root) {
+  if (root == null) return 0;
+
+  int left = heightOfTree(root.left);
+  int right = heightOfTree(root.right);
+
+  int max = math.max(left, right) + 1;
+
+  return max;
 }
