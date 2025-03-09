@@ -3,25 +3,28 @@ import 'dart:collection';
 import 'binary_tree.dart';
 
 class BinaryTreeTraversal {
+  /**
+   * Left -> Root -> Right
+   */
   void inOrderRecursiveTraversal(Node? node) {
     if (node == null) return;
-    inOrderRecursiveTraversal(node.left);
-    if (node.value != -1) print(node.value);
-    inOrderRecursiveTraversal(node.right);
+    inOrderRecursiveTraversal(node.left); // Left
+    if (node.value != -1) print(node.value); // Root
+    inOrderRecursiveTraversal(node.right); // Right
   }
 
   void preOrderRecursiveTraversal(Node? node) {
     if (node == null) return;
-    if (node.value != -1) print(node.value);
-    preOrderRecursiveTraversal(node.left);
-    preOrderRecursiveTraversal(node.right);
+    if (node.value != -1) print(node.value); // Root
+    preOrderRecursiveTraversal(node.left); // Left
+    preOrderRecursiveTraversal(node.right); // Right
   }
 
   void postOrderRecursiveTraversal(Node? node) {
     if (node == null) return;
-    postOrderRecursiveTraversal(node.left);
-    postOrderRecursiveTraversal(node.right);
-    if (node.value != -1) print(node.value);
+    postOrderRecursiveTraversal(node.left); // Left
+    postOrderRecursiveTraversal(node.right); // Right
+    if (node.value != -1) print(node.value); // Root
   }
 
   void inOrderIterativeTraversal(Node? node) {
