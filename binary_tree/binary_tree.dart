@@ -3,6 +3,20 @@ import 'dart:math' as math;
 
 import 'binary_tree_traversal.dart';
 
+/**
+ * Binary Tree
+ * 
+ * A binary tree is a tree data structure in which each node has at most two children, which are referred to as the left child and the right child.
+ * 
+ * Binary Tree Traversal:
+ * 1. In order traversal (Recursive)
+ * 2. Pre order traversal (Recursive)
+ * 3. Post order traversal (Recursive)
+ * 4. In order traversal (Iterative - stack)
+ * 5. Pre order traversal (Iterative - stack)
+ * 6. Post order traversal (Iterative - stack)
+ * 7. Level Order traversal (Iterative - BFS - Queue)
+ */
 void main() {
   Node root = buildTree();
   print("Tree is built successfully");
@@ -17,8 +31,9 @@ void main() {
           5. Pre order traversal (Iterative - stack)
           6. Post order traversal (Iterative - stack)
           7. Level Order traversal (Iterative - BFS - Queue)
-          8. All traversals
-          9. Height of the tree
+          8. Level Order traversal (Recursive)
+          9. All traversals
+          10. Height of the tree
         """);
 
   String? input = stdin.readLineSync();
@@ -63,6 +78,10 @@ void main() {
       traversal.levelOrderTraversal(root);
       break;
     case 8:
+      print("Level Order traversal (Recursive):");
+      traversal.levelOrderTraversal(root);
+      break;
+    case 9:
       print("All traversals:");
       print("In order traversal (Recursive):");
       traversal.inOrderRecursiveTraversal(root);
@@ -79,7 +98,7 @@ void main() {
       print("Level Order traversal (Iterative):");
       traversal.levelOrderTraversal(root);
       break;
-    case 9:
+    case 10:
       print("Height of the tree: ${heightOfTree(root)}");
       break;
     default:
@@ -88,6 +107,11 @@ void main() {
   }
 }
 
+/**
+ * Node class
+ * 
+ * Represents a node in a binary tree
+ */
 class Node {
   int value;
   Node? left;
@@ -121,6 +145,19 @@ Node buildTree() {
   return root;
 }
 
+/**
+ * Height of the tree
+ * 
+ * The height of a binary tree is the number of edges between the tree's root and its furthest leaf.
+ * 
+ *      1
+ *     / \
+ *    2   3
+ *   / \
+ * 4   5
+ * 
+ * Height of the tree: 3
+ */
 int heightOfTree(Node? root) {
   if (root == null) return 0;
 
