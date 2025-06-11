@@ -24,7 +24,7 @@ def bfs_graph_traversal():
         visited.add(node)
 
         for neighbour in graph[node]:
-            if neighbour not in visited and neighbour not in queue:
+            if neighbour not in visited:
                 queue.append(neighbour)
     print()
 
